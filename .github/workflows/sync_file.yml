@@ -1,0 +1,25 @@
+name: Sync External File
+
+on:
+  schedule:
+    - cron: '0 3 * * *' # 每天3点执行一次
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v2
+
+      - name: Fetch external file
+        run: |
+          curl -o tv_ipv6.m3u https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "lvfch"
+          git config user.email "lvfch@example.com"
+          git add tv_ipv6.m3u
+          git commit -m "Update external file"
+          git push
