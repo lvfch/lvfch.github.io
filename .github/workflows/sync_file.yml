@@ -1,8 +1,6 @@
 name: Sync External File
 
 on:
-  schedule:
-    - cron: '0 3 * * *' # 每天3点执行一次
   workflow_dispatch:
 
 jobs:
