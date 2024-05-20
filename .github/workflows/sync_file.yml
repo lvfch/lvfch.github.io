@@ -17,11 +17,12 @@ jobs:
         run: |
           curl -o tv_ipv6.m3u https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u
           curl -o tv_ipv6_plus.m3u https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6Plus.m3u
+          date > last_update.txt
 
       - name: Commit and push changes
         run: |
           git config user.name "lvfch"
           git config user.email "lvfch@example.com"
-          git add tv_ipv6.m3u tv_ipv6_plus.m3u
+          git add tv_ipv6.m3u tv_ipv6_plus.m3u last_update.txt
           git commit -m "Update external file"
           git push
